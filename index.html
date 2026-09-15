@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0,
+                   viewport-fit=cover">
+
+    <title>Campo de Girasoles</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!--
+        La página es larga para que podamos "caminar"
+        haciendo scroll.
+    -->
+    <div class="scroll-page">
+
+        <main class="scene">
+
+            <!-- CIELO -->
+            <div class="sky"></div>
+
+            <!-- RESPLANDOR -->
+            <div class="sun-glow"></div>
+
+            <!-- SOL -->
+            <div class="sun"></div>
+
+            <!-- HORIZONTE -->
+            <div class="horizon"></div>
+
+            <!-- TERRENO -->
+            <div class="ground"></div>
+
+            <!-- CAMINO CENTRAL -->
+            <div class="road"></div>
+
+            <!-- CONTENEDOR DE FLORES -->
+            <div class="flowers" id="flowers"></div>
+
+
+            <!-- INSTRUCCIÓN INICIAL -->
+            <div class="instruction" id="instruction">
+
+                <p>
+                    DESLIZA PARA CAMINAR ENTRE LOS GIRASOLES
+                </p>
+
+                <div class="arrow">↓</div>
+
+            </div>
+
+
+            <!-- GIRASOL FINAL -->
+            <div class="final-sunflower"
+                 id="finalSunflower">
+
+                <div class="big-flower">
+
+                    <div class="big-petals"
+                         id="bigPetals">
+                    </div>
+
+                    <div class="big-center"></div>
+
+                </div>
+
+
+                <!-- TARJETA -->
+                <div class="card">
+
+                    <span class="small-text">
+                        PARA TI 🌻
+                    </span>
+
+                    <h1>
+                        Camina hasta el centro<br>
+                        del campo
+                    </h1>
+
+                    <div class="line"></div>
+
+                    <p>
+                        Recorrí un campo sin final,<br>
+                        y cada girasol gira para verte pasar.
+                    </p>
+
+                    <p>
+                        Porque hasta las flores saben<br>
+                        hacia dónde mirar cuando llega la luz.
+                    </p>
+
+                    <strong>
+                        Y mi luz, siempre has sido tú
+                        
+                        Angélica 
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- OSCURECIMIENTO LIGERO -->
+            <div class="vignette"></div>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

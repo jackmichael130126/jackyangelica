@@ -1,0 +1,974 @@
+/* =====================================
+   RESET
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+
+    background: #170b19;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* =====================================
+   ALTURA DE RECORRIDO
+===================================== */
+
+.scroll-page {
+    height: 520vh;
+}
+
+
+/* =====================================
+   ESCENA FIJA
+===================================== */
+
+.scene {
+
+    position: sticky;
+
+    top: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    perspective: 1000px;
+
+    background: #4c246e;
+}
+
+
+/* =====================================
+   CIELO
+===================================== */
+
+.sky {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 43%,
+            rgba(255, 182, 85, 0.25),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            to bottom,
+            #411873 0%,
+            #70258d 28%,
+            #b14b9d 47%,
+            #ec88a0 61%,
+            #f3ad70 72%,
+            #df9a58 100%
+        );
+}
+
+
+/* =====================================
+   RESPLANDOR DEL SOL
+===================================== */
+
+.sun-glow {
+
+    position: absolute;
+
+    left: 50%;
+    top: 42%;
+
+    width: 300px;
+    height: 300px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 1;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255, 238, 137, 0.8) 0%,
+            rgba(255, 204, 91, 0.45) 35%,
+            rgba(255, 173, 75, 0.12) 62%,
+            transparent 72%
+        );
+
+    filter: blur(8px);
+}
+
+
+/* =====================================
+   SOL
+===================================== */
+
+.sun {
+
+    position: absolute;
+
+    left: 50%;
+    top: 43%;
+
+    width: clamp(85px, 12vw, 150px);
+    aspect-ratio: 1;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 2;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #fff8bf 0%,
+            #ffe77f 35%,
+            #ffc253 70%,
+            #f09947 100%
+        );
+
+    box-shadow:
+
+        0 0 25px rgba(255, 229, 122, .9),
+
+        0 0 70px rgba(255, 184, 81, .75),
+
+        0 0 130px rgba(255, 146, 76, .4);
+}
+
+
+/* =====================================
+   HORIZONTE
+===================================== */
+
+.horizon {
+
+    position: absolute;
+
+    left: -5%;
+    top: 48%;
+
+    width: 110%;
+    height: 17%;
+
+    z-index: 3;
+
+    border-radius: 50% 50% 0 0;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #a6653d,
+            #6f422a
+        );
+}
+
+
+/* =====================================
+   TERRENO
+===================================== */
+
+.ground {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 53%;
+
+    z-index: 4;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #70462a 0%,
+            #50321f 38%,
+            #32231b 75%,
+            #201915 100%
+        );
+}
+
+
+/* =====================================
+   CAMINO CENTRAL
+===================================== */
+
+.road {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -10%;
+
+    width: 68%;
+    height: 64%;
+
+    z-index: 5;
+
+    transform:
+        translateX(-50%);
+
+    clip-path:
+        polygon(
+            46% 0%,
+            54% 0%,
+            100% 100%,
+            0% 100%
+        );
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #72513c 0%,
+            #684630 25%,
+            #4c3327 65%,
+            #38271f 100%
+        );
+}
+
+
+/* LUZ DEL CAMINO */
+
+.road::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 20%,
+            rgba(255, 199, 114, .18),
+            transparent 55%
+        );
+}
+
+
+/* =====================================
+   CONTENEDOR FLORES
+===================================== */
+
+.flowers {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 12;
+
+    pointer-events: none;
+}
+
+
+/* =====================================
+   GIRASOLES
+===================================== */
+
+.flower {
+
+    --size: 100px;
+
+    position: absolute;
+
+    width: var(--size);
+    height: calc(var(--size) * 2.45);
+
+    transform-origin:
+        50% 100%;
+
+    will-change: transform;
+
+    filter:
+        drop-shadow(
+            0 10px 7px
+            rgba(0,0,0,.2)
+        );
+}
+
+
+/* =====================================
+   TALLO
+===================================== */
+
+.stem {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width:
+        calc(var(--size) * .095);
+
+    height:
+        calc(var(--size) * 1.72);
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #174829,
+            #4c9656 48%,
+            #1b5f31
+        );
+}
+
+
+/* =====================================
+   HOJAS
+===================================== */
+
+.leaf {
+
+    position: absolute;
+
+    width:
+        calc(var(--size) * .58);
+
+    height:
+        calc(var(--size) * .30);
+
+    bottom:
+        calc(var(--size) * .60);
+
+    z-index: 2;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #69ad68,
+            #2c7642
+        );
+}
+
+
+.leaf-left {
+
+    left: 2%;
+
+    border-radius:
+        100% 0
+        100% 0;
+
+    transform:
+        rotate(25deg);
+}
+
+
+.leaf-right {
+
+    right: 2%;
+
+    border-radius:
+        0 100%
+        0 100%;
+
+    transform:
+        rotate(-25deg);
+}
+
+
+/* =====================================
+   CABEZA
+===================================== */
+
+.head {
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: var(--size);
+    height: var(--size);
+
+    transform:
+        translateX(-50%);
+
+    z-index: 4;
+}
+
+
+/* =====================================
+   PÉTALOS
+===================================== */
+
+.petal {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width:
+        calc(var(--size) * .22);
+
+    height:
+        calc(var(--size) * .53);
+
+    transform-origin:
+        50% 100%;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #fff5a1,
+            #fbd45c 60%,
+            #dca536
+        );
+
+    box-shadow:
+
+        inset 0 2px 3px
+        rgba(255,255,255,.35);
+}
+
+
+/* =====================================
+   CENTRO GIRASOL
+===================================== */
+
+.flower-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 48%;
+    height: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 10;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 30%,
+            #b47e4f,
+            #744127 45%,
+            #4a291d 75%,
+            #2d1913
+        );
+
+    box-shadow:
+
+        inset 5px 6px 8px
+        rgba(255,255,255,.11),
+
+        inset -5px -7px 10px
+        rgba(0,0,0,.35),
+
+        0 2px 6px
+        rgba(0,0,0,.4);
+}
+
+
+/* =====================================
+   MENSAJE INICIAL
+===================================== */
+
+.instruction {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 8%;
+
+    transform:
+        translateX(-50%);
+
+    width: 90%;
+
+    z-index: 100;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.88);
+
+    transition:
+        opacity .4s ease;
+
+    text-shadow:
+        0 2px 5px
+        rgba(0,0,0,.8);
+}
+
+
+.instruction p {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            8px,
+            1.4vw,
+            12px
+        );
+
+    letter-spacing:
+        3px;
+}
+
+
+.arrow {
+
+    margin-top: 8px;
+
+    font-family: Arial;
+
+    font-size: 22px;
+
+    animation:
+        arrowMove
+        .8s
+        infinite alternate;
+}
+
+
+@keyframes arrowMove {
+
+    from {
+        transform:
+            translateY(0);
+    }
+
+    to {
+        transform:
+            translateY(8px);
+    }
+
+}
+
+
+/* =====================================
+   GIRASOL FINAL
+===================================== */
+
+.final-sunflower {
+
+    position: absolute;
+
+    left: 50%;
+    top: 52%;
+
+    width:
+        min(82vw, 650px);
+
+    aspect-ratio: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.05);
+
+    opacity: 0;
+
+    z-index: 200;
+
+    pointer-events: none;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+/* =====================================
+   FLOR FINAL
+===================================== */
+
+.big-flower {
+
+    position: absolute;
+
+    inset: 0;
+}
+
+
+.big-petals {
+
+    position: absolute;
+
+    inset: 0;
+}
+
+
+.big-petal {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 20%;
+    height: 51%;
+
+    transform-origin:
+        50% 100%;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #fff7a7 0%,
+            #f9d65f 58%,
+            #d59c32 100%
+        );
+
+    box-shadow:
+
+        inset 0 4px 8px
+        rgba(255,255,255,.3),
+
+        0 3px 7px
+        rgba(0,0,0,.18);
+}
+
+
+.big-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 38%;
+    aspect-ratio: 1;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 4;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #a56d3e,
+            #6a3d25 55%,
+            #43251b
+        );
+}
+
+
+/* =====================================
+   TARJETA FINAL
+===================================== */
+
+.card {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-2deg);
+
+    z-index: 20;
+
+    width:
+        clamp(
+            175px,
+            33%,
+            245px
+        );
+
+    min-height:
+        clamp(
+            210px,
+            40%,
+            295px
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px 18px;
+
+    text-align: center;
+
+    color: #fff7e8;
+
+    border-radius: 3px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #4c392f,
+            #2d211d
+        );
+
+    box-shadow:
+
+        0 15px 30px
+        rgba(0,0,0,.45),
+
+        inset 0 0 25px
+        rgba(255,255,255,.04);
+}
+
+
+.small-text {
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    opacity: .75;
+
+    margin-bottom: 10px;
+}
+
+
+.card h1 {
+
+    font-size:
+        clamp(
+            15px,
+            2.8vw,
+            25px
+        );
+
+    line-height: 1.15;
+
+    font-weight: normal;
+
+    margin-bottom: 13px;
+}
+
+
+.line {
+
+    width: 35px;
+    height: 1px;
+
+    background:
+        rgba(255,255,255,.6);
+
+    margin-bottom: 12px;
+}
+
+
+.card p {
+
+    font-size:
+        clamp(
+            8px,
+            1.4vw,
+            12px
+        );
+
+    line-height: 1.55;
+
+    margin-bottom: 9px;
+}
+
+
+.card strong {
+
+    font-size:
+        clamp(
+            8px,
+            1.4vw,
+            12px
+        );
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+/* =====================================
+   VIÑETA
+===================================== */
+
+.vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 300;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            transparent 50%,
+            rgba(0,0,0,.11) 85%,
+            rgba(0,0,0,.28) 100%
+        );
+}
+
+
+/* =====================================
+   CELULAR
+===================================== */
+
+@media (max-width: 600px) {
+
+    .sun-glow {
+
+        width: 210px;
+        height: 210px;
+
+        top: 40%;
+    }
+
+
+    .sun {
+
+        top: 41%;
+    }
+
+
+    .horizon {
+
+        top: 47%;
+        height: 18%;
+    }
+
+
+    .ground {
+
+        height: 54%;
+    }
+
+
+    .road {
+
+        width: 100%;
+        height: 62%;
+    }
+
+
+    .final-sunflower {
+
+        width: 125vw;
+
+        max-width: none;
+
+        top: 51%;
+    }
+
+
+    .card {
+
+        width: 185px;
+
+        min-height: 235px;
+
+        padding:
+            20px 14px;
+    }
+
+
+    .card h1 {
+
+        font-size: 17px;
+    }
+
+
+    .card p,
+    .card strong {
+
+        font-size: 9px;
+    }
+
+
+    .instruction {
+
+        bottom: 5%;
+    }
+
+}
+
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media (max-width: 360px) {
+
+    .card {
+
+        width: 165px;
+
+        min-height: 215px;
+    }
+
+
+    .card h1 {
+
+        font-size: 15px;
+    }
+
+}
